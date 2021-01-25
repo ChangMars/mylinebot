@@ -1,0 +1,28 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx
+    build: ./.nginx
+    restart: always
+    ports:
+      # - "8080:80"
+      - "80:80"
+    volumes:
+      - .:/mylinebot
+      - ./log:/var/log/nginx
+    depends_on:
+      - api
+      - celery
+
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: .nginx/Dockerfile
+    command: uwsgi --ini uwsgi.ini
+    restart: always
+    volumes:
+      - .:/mylinebot
+      # (HOST:CONTAINER)
+    depends_on:
+      - redis
