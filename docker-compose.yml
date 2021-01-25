@@ -24,7 +24,7 @@ services:
     container_name: api
     build:
       context: .
-      dockerfile: .nginx/Dockerfile
+      dockerfile: .django/Dockerfile
     command: uwsgi --ini uwsgi.ini
     restart: always
     volumes:
