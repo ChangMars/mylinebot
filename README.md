@@ -1,5 +1,7 @@
 # mylinebot
 
+LineID:@009xexcp
+
 ## 爬取中油提供公開資訊，提供使用者透過Line查詢
 功能如下:
 * 查詢即時油價
