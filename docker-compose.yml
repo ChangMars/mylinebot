@@ -16,6 +16,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
+      - .:/mylinebot
       - ./nginx/sites-enabled:/etc/nginx/sites-enabled
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/html
