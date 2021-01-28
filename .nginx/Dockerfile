@@ -5,7 +5,7 @@ RUN mkdir /etc/nginx/sites-available/
 RUN mkdir /etc/nginx/snippets/
 
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY my_nginx_ssl.conf /etc/nginx/sites-available/
+#COPY my_nginx_ssl.conf /etc/nginx/sites-available/
 COPY ssl-params.conf /etc/nginx/snippets/
 COPY ssl-www.good-roader.tk.conf /etc/nginx/snippets/
 
