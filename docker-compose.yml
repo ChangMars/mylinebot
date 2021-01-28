@@ -1,11 +1,11 @@
 version: '3'
 services:
-  redis:
-    container_name: redis
-    image: redis:6.0.9-alpine #alpine 容器佔用空間較小，通常建議使用
-    ports:
-      - "6379:6379"
-    restart: always
+  #redis:
+    #container_name: redis
+    #image: redis:6.0.9-alpine #alpine 容器佔用空間較小，通常建議使用
+    #ports:
+    #  - "6379:6379"
+    #restart: always
 
   nginx:
     container_name: nginx
@@ -22,7 +22,6 @@ services:
       - ./log:/var/log/nginx
     depends_on:
       - api
-      - certbot
 
   certbot:
     container_name: certbot
@@ -32,6 +31,8 @@ services:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
       - ./log:/var/log/letsencrypt
+    depends_on:
+      - certbot
 
   api:
     container_name: api
@@ -43,5 +44,5 @@ services:
     volumes:
       - .:/mylinebot
       # (HOST:CONTAINER)
-    depends_on:
-      - redis
+    #depends_on:
+    #  - redis
