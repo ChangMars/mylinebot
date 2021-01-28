@@ -32,7 +32,7 @@ services:
       - ./certbot/www:/var/www/certbot
       - ./log:/var/log/letsencrypt
     depends_on:
-      - certbot
+      - nginx
 
   api:
     container_name: api
