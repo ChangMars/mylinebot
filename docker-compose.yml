@@ -1,11 +1,11 @@
 version: '3'
 services:
-  #redis:
-    #container_name: redis
-    #image: redis:6.0.9-alpine #alpine 容器佔用空間較小，通常建議使用
-    #ports:
-    #  - "6379:6379"
-    #restart: always
+  redis:
+    container_name: redis
+    image: redis:6.0.9-alpine #alpine 容器佔用空間較小，通常建議使用
+    ports:
+      - "6379:6379"
+    restart: always
 
   nginx:
     container_name: nginx
@@ -16,7 +16,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - .:/mylinebot
+      - ./nginx/sites-enabled:/etc/nginx/sites-enabled
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
       - ./log:/var/log/nginx
@@ -26,7 +26,7 @@ services:
   certbot:
     container_name: certbot
     image: certbot/certbot:latest
-    command: certbot certonly --webroot --webroot-path=/var/www/html --email changchiarong@gmail.com --agree-tos --no-eff-email --force-renewal -d www.good-roader.tk
+    command: certbot certonly --webroot --webroot-path=/var/www/html --email changchiarong@gmail.com --agree-tos --no-eff-email --force-renewal -d www.good-road-bot.ga
     volumes:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
@@ -44,5 +44,5 @@ services:
     volumes:
       - .:/mylinebot
       # (HOST:CONTAINER)
-    #depends_on:
-    #  - redis
+    depends_on:
+      - redis
