@@ -3,7 +3,6 @@ FROM nginx:latest
 RUN mkdir /etc/nginx/sites-enabled
 RUN mkdir /etc/nginx/sites-available/
 RUN mkdir /etc/nginx/snippets/
-RUN mkdir /etc/ssl/certs/
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY default_nginx.conf /etc/nginx/sites-available/
