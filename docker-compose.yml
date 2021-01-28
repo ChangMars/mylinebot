@@ -27,7 +27,7 @@ services:
   certbot:
     container_name: certbot
     image: certbot/certbot:latest
-    command: certbot certonly --webroot --webroot-path=/var/www/certbot --email changchiarong@gmail.com --agree-tos --no-eff-email -d www.good-roader.tk
+    command: certbot certonly --webroot --webroot-path=/var/www/html --email changchiarong@gmail.com --agree-tos --no-eff-email --force-renewal -d www.good-roader.tk
     volumes:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
