@@ -27,7 +27,7 @@ services:
   certbot:
     container_name: certbot
     image: certbot/certbot:latest
-    command: certonly --webroot --webroot-path=/var/www/html --email changchiarong@gmail.com --agree-tos --no-eff-email --force-renewal -d www.good-road-bot.ga
+    command: certonly --webroot --webroot-path=/var/www/html --email changchiarong@gmail.com --agree-tos --no-eff-email --force-renewal -d www.good-road-bot.ga #啟動後執行的command
     volumes:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/html
