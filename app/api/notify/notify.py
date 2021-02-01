@@ -23,7 +23,7 @@ class LineNotifyAPIView(APIView):
             newnotify = NotifyModel.objects.get(booking_uuid=request.data.__getitem__('state'))
             print(newnotify.booking_uuid + "連結正確")
         except NotifyModel.DoesNotExist:
-            return HttpResponse("Fill_Up_Bot_Notify連動失敗。請重新訂閱~")
+            return HttpResponse("Good Roader Bot Notify連動失敗。請重新訂閱~")
         notify_seturl = 'https://notify-bot.line.me/oauth/token'
         print(request.data.__getitem__('state'))
         print(request.data.__getitem__('code'))
@@ -48,12 +48,12 @@ class LineNotifyAPIView(APIView):
                     "Authorization": "Bearer " + params['access_token'],
                     "Content-Type": "application/x-www-form-urlencoded"
                 }
-                params = {"message": "Fill_Up_Bot_Notify設定成功"}
+                params = {"message": "Good Roader Bot Notify設定成功"}
                 r = requests.post("https://notify-api.line.me/api/notify", headers=headers, params=params)
-                return HttpResponse("Fill_Up_Bot_Notify連動完成。感謝訂閱，若要取消連動請輸入[取消訂閱]。")
+                return HttpResponse("Good Roader Bot Notify連動完成。感謝訂閱，若要取消連動請輸入[取消訂閱]。")
             except NotifyModel.DoesNotExist:
                 print(request.data.__getitem__('state')+"狀態失效")
-        return HttpResponse("Fill_Up_Bot_Notify連動失敗。請重新訂閱~")
+        return HttpResponse("Good Roader Bot Notify連動失敗。請重新訂閱~")
 
 class NotifyAPIView(APIView):
     def get(self,request, *args, **kwargs):
