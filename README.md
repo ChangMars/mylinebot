@@ -17,5 +17,5 @@ LineID:@009xexcp
 * 資料庫使用 sqlite3
 * 繪圖使用 pyecharts
 * 訊息透過 Linebot + LineNotify
-
+* Server Google Cloud Platform + docker + ssl 
 
